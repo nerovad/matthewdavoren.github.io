@@ -215,6 +215,9 @@ a:visited {
   z-index: 1;
   margin-right: 14rem;
 }
+.hello a{
+  color: rgb(233, 233, 233)
+}
 .profile-pic {
   width: 20%;
   height: 38%;
@@ -226,7 +229,7 @@ a:visited {
   position: relative;
 
   animation: up-n-down,fade-in;
-  animation-duration: 1.3s,3s;
+  animation-duration: 1.3s,2.3s;
   animation-timing-function: ease;
   z-index: 1;
 }
@@ -367,13 +370,14 @@ a:visited {
   font-size: 20px;
   margin-top: 2rem;
   margin-left: 0rem;
-  margin-right: 0%;
+  margin-right: 4rem;
   line-height: 1.6;
 }
 
 .aboutme-description a{
   font-style: italic;
   font-weight: bold;
+  color: rgb(233, 233, 233);
 }
 .profile-pic-about {
   width: 20%;
