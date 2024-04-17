@@ -13,22 +13,39 @@
 <body>
     <div class="container-home"> 
         <div class="navigation">
-                    <a href="index.html">
-                        <img class="logo" src="../images/matthewdavorenlogo.svg" alt="Matthew Davoren Home">
-                    </a>
-                    <div class="vertical-line"><style></style></div>
+            <div class="left-side-menu">
+                <div class="logo">
+                    <a href="index.html"><img class="logo" src="../images/matthewdavorenlogo.svg" alt="Matthew Davoren Home"></a>
+                </div>
+               
+                <div class="vertical-line"><style></style></div>
+                <div class="menu-button-container">
                     <button class="menu-toggle-button" onclick="toggleMenu()">MENU</button>
                     <ul class="menu-items">
                     <li><a href="#" onclick="smoothScroll('#about-me-title');">ABOUT</a></li>
                     <li><a href="#" onclick="smoothScroll('#projects-title');">PROJECTS</a></li>
                     <li><a href="#" onclick="smoothScroll('#resume-button');">RESUMÉ</a></li>
                 </ul>
-                <button class="contact-button" onclick="toggleContact()">CONTACT</button>
-                <ul class="contact-list">
-                    <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
-                    <li><a href="https://github.com/Matthewdavoren" target="_blank">GITHUB</a></li>
-                    <li><a href=mailto:“matthewdavoren@gmail.com target="_blank">EMAIL</a></li>
-                </ul>
+                </div>
+            </div>
+                <div class="contact-button-container">
+                    <button class="contact-button" onclick="toggleContact()">CONTACT</button>
+                    <button class="hamburger-button" onclick="toggleHamburger()">&#9776;</button>
+                    <ul class="contact-list">
+                        <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
+                        <li><a href="https://github.com/Matthewdavoren" target="_blank">GITHUB</a></li>
+                        <li><a href=mailto:“matthewdavoren@gmail.com target="_blank">EMAIL</a></li>
+                    </ul>
+                    <ul class="hamburger-list">
+                        <button class="close-button">&#10005;</button>
+                        <li><a href="#" onclick="smoothScroll('#about-me-title');">ABOUT</a></li>
+                        <li><a href="#" onclick="smoothScroll('#projects-title');">PROJECTS</a></li>
+                        <li><a href="#" onclick="smoothScroll('#resume-button');">RESUMÉ</a></li>
+                        <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
+                        <li><a href="https://github.com/Matthewdavoren" target="_blank">GITHUB</a></li>
+                        <li><a href=mailto:“matthewdavoren@gmail.com target="_blank">EMAIL</a></li>
+                    </ul>
+                </div>
         </div>
         <div class="index-content">
         <div class="hello">
@@ -36,17 +53,24 @@
         <h3>I'm a Jr. Developer from Ventura, CA.</h3>
         <h5>Learn more <a href="#" onclick="smoothScroll('#about-me-title');">About</a> Me!</h5>
         </div>
-        <img class="profile-pic-background" src="../images/Cartoon_Profile_Pic_Background_Stripes.svg" alt="Profile Pic">
-        <img class="profile-pic" src="../images/Profile_Pic_Cartoon_Website.svg" alt="Profile Pic">
+        <div class="profile-pic-container">
+            <img class="profile-pic-background" src="../images/Cartoon_Profile_Pic_Background_Stripes.svg" alt="Profile Pic">
+            <img class="profile-pic" src="../images/Profile_Pic_Cartoon_Website.svg" alt="Profile Pic">
+        </div>
     </div>
-    <div class="scroll-word-1">
-        <h5>scroll</h5>
+    <div class="scroll">
+        <div class="scroll-word-1">
+            <h5>scroll</h5>
+        </div>
+        <div class="scroll-line-1"><style></style></div>
     </div>
-    <div class="scroll-line-1"><style></style></div>
     <div id="about-me-title">
         <h1>Let's Work Together.</h1>
     </div>
     <div class="about-me-section">
+        <div id="about-me-title-small">
+            <h1>Let's Work Together.</h1>
+        </div>
         <p class="aboutme-description">As a Junior Developer fueled by a passion for crafting innovative<br>
             solutions, I want to learn and grow in the Software industry. My focus<br>
             lies primarily in Java, but I also dabble in HTML, CSS and Javascript<br>
@@ -63,10 +87,11 @@
         <img class="profile-pic-about" src="../images/Profile_Pic.jpeg" alt="Profile Pic">
     </div>
         
-        <div id="projects-title">
-            <h1>Recent Work</h1>
-        </div>
+        
         <div class="project-container">
+            <div id="projects-title">
+                <h1>Recent Work</h1>
+            </div>
             <div class="project-container-1">
             <div class="project-1"><a href="https://github.com/Matthewdavoren/Storage-Utilization" target=”_blank”>NFL Storage Utilization</a>
             <div class="project-1-description">A Java project with Maven dependencies for the NFL that analyzed our storage system using getters and setters, tree maps and hash maps. It then produced a CSV that I presented to management summarizing where our storage inefficiencies lie.</div>
@@ -162,37 +187,19 @@
         </div>
 
         <div class="sub-container-resume">
-        <!-- <div id="resume-title">
-                <h1>Resume</h1>
-            </div> -->
-            <!-- <img class="toejam-sign" src="../images/ToeJamSign.svg" alt="Resume Download"> -->
-            <a id="resume-button" href="../PDF/Matthew_Davoren_Resume_041524.pdf" target="_blank">
+            <a id="resume-button" href="../PDF/Matthew_Davoren_Resume_041624.pdf" target="_blank">
 
                 <div class="face-primary">
-                  <!-- <span class="icon"></span> -->
                   RESUMÉ
                 </div>
                 
                 <div class="face-secondary">
-                  <!-- <span class="icon"></span> -->
                   DOWNLOAD PDF
                 </div>
               
               </a>
         </div>
-</div>
-     <!--<div class="footer">
-            <div class="social-links">
-                <img class="github" src="../images/icon_gmail.svg" alt="Github">
-                <img class="github" src="../images/github.svg" alt="Github">
-                <img class="linkedin" src="../images/icon_linkedin.svg" alt="Linkedin">
-            </div>
-            <div class="footer-flex">
-                <p>© Matthew Davoren 2023</p>
-            </div> 
-            
-    </div>-->
-        
+</div>      
     <script src="../JS/script.js"></script>  
 </body>
 </html>
