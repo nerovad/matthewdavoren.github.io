@@ -1630,7 +1630,7 @@ position: relative;
   align-items: center;
   justify-content: center;
   background-color: whitesmoke;
-  border-radius: 1rem 0rem 0rem 1rem ;
+  border-radius: 1rem 0rem 0rem 1rem;
 }
 .project-1 a, .project-2 a, .project-3 a, .project-4 a {
   color: black;
