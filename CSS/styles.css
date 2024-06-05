@@ -529,7 +529,6 @@ a:visited {
 #projects-title {
   font-size: 2.8rem;
   margin-right: 63rem;
-  margin-top: 20rem;
   margin-bottom: 40px;
 }
 .project-container {
@@ -539,28 +538,26 @@ a:visited {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  margin-top: 25%;
   margin-left: 0%;
-  justify-items: center;
   align-items: center;
   justify-content: center;
-  align-content: center;
   font-size: 20px;
 }
-.project-1-description, .project-2-description {
+.project-1-description, .project-2-description, .project-3-description {
   margin-top: 3rem;
   margin-left: 2rem;
 }
-.project-container-1, .project-container-2 {
-  height: 440px;
-  width: 1200px;
+.project-container-1, .project-container-2, .project-container-3 {
+  height: auto;
+  width: 58%;
   display: flex;
   border: 1px solid black;
   margin-bottom: 60px;
   box-shadow: 15px 15px 30px rgb(0, 0, 0);
   border-radius: 1rem;
 }
-.project-1, .project-2 {
+.project-1, .project-2, .project-3 {
   display: flex;
   flex-direction: column;
   color: black;
@@ -569,29 +566,30 @@ a:visited {
   background-color: whitesmoke;
   border-radius: 1rem 0rem 0rem 1rem ;
 }
-.project-1 a, .project-2 a {
+.project-1 a, .project-2 a, .project-3 a {
   color: black;
   font-size: 4rem;
   font-weight: bold;
   text-decoration: none;
   margin-top: 2rem;
 }
-.project-1-side-image, .project-2-side-image {
+.project-1-side-image, .project-2-side-image, .project-3-side-image {
   display: flex;
+  width: 50%;
 }
 .project-1-side-image img {
-  width: 600px;
-  height: 438px;
+  width: 100%;
+  height: auto;
   border-radius: 0rem 1rem 1rem 0rem ;
 }
 .project-2-side-image img {
-  width: 600px;
-  height: 438px;
+  width: 100%;
+  height: auto;
   border-radius: 0rem 1rem 1rem 0rem ;
 }
 .project-3-side-image img {
-  width: 600px;
-  height: 438px;
+  width: 100%;
+  height: auto;
   border-radius: 0rem 1rem 1rem 0rem ;
 }
 .project-4-side-image img {
@@ -605,8 +603,9 @@ a:visited {
   border: 3px solid #902bf5;
   font-family: "Roboto", sans-serif;
   overflow: hidden;
-  margin-top: 10rem;
+  margin-top: 10%;
   margin-left: 1.5rem;
+  margin-bottom: 5%;
 }
 .try-it-out-container a {
   font-size: 17px;
@@ -655,7 +654,7 @@ a:hover .face-primary-try-it-out {
   text-align: center;
   text-decoration: none;
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 10%;
 }
 
 .face-primary,
@@ -683,7 +682,7 @@ a:hover .face-primary {
 /* Smaller screens (Mobile devices) */
 @media (max-width: 640px) {
   html, body {
-      font-size: 50%; /* Reduce font size for small devices */
+      font-size: 50%;
       overflow-x: hidden;
       max-width: 100%;
   }
@@ -1104,9 +1103,9 @@ a:hover .face-primary {
 .project-container {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Adjust width */
+    width: 100%; 
     height: auto;
-    margin-left: 0%; /* Center grid */
+    margin-left: 0%; 
     margin-top: 0;
     justify-content: center;
     align-items: center;
@@ -1197,7 +1196,7 @@ a:hover .face-primary {
 /* Medium screens (Tablets) */
 @media (min-width: 641px) and (max-width: 1199px) {
   html, body {
-    font-size: 50%; /* Reduce font size for small devices */
+    font-size: 50%; 
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -1553,6 +1552,7 @@ justify-content: center;
 align-items: center;
 margin-top: 0rem;
 min-height: 1100px;
+padding: 20%;
 }
 .about-me-p-img {
   display: flex;
@@ -1597,103 +1597,7 @@ position: relative;
 
 #projects-title {
   font-size: 3.2rem;
-  margin-left: 0rem;
-  margin-top: 0rem;
-  margin-right: 0rem;
-}
-.project-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 0%;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  font-size: 20px;
-}
-.project-container-1, .project-container-2, .project-container-3, .project-container-4 {
-  height: 440px;
-  width: 800px;
-  display: flex;
-  border: 1px solid black;
-  margin-top: 60px;
-  box-shadow: 15px 15px 30px rgb(0, 0, 0);
-  border-radius: 1rem;
-}
-.project-1, .project-2, .project-3, .project-4 {
-  display: flex;
-  flex-direction: column;
-  color: black;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  background-color: whitesmoke;
-  border-radius: 1rem 0rem 0rem 1rem;
-}
-.project-1 a, .project-2 a, .project-3 a, .project-4 a {
-  color: black;
-  font-size: 3.6rem;
-  font-weight: bold;
-  text-decoration: none;
-  margin-top: 2rem;
-}
-.project-1-description, .project-2-description, .project-3-description, .project-4-description {
-  margin-top: 3rem;
-  margin-left: 2rem;
-  font-size: 2rem;
-}
-.project-1-side-image img {
-  width: 400px;
-  height: 438px;
-  border-radius: 0rem 1rem 1rem 0rem;
-}
-.project-2-side-image img {
-  width: 400px;
-  height: 438px;
-  border-radius: 0rem 1rem 1rem 0rem;
-}
-.project-3-side-image img {
-  width: 400px;
-  height: 438px;
-  border-radius: 0rem 1rem 1rem 0rem;
-}
-.project-4-side-image img {
-  width: 400px;
-  height: 440px;
-  border-radius: 0rem 1rem 1rem 0rem;
-}
-.try-it-out-container {
-  height: 40px;
-  display: inline-block;
-  border: 3px solid #902bf5;
-  font-family: "Roboto", sans-serif;
-  overflow: hidden;
-  margin-top: 8rem;
-  margin-left: 1.5rem;
-}
-.try-it-out-container a {
-  font-size: 17px;
-  font-weight: 500;
-  text-align: center;
-  text-decoration: none;
-}
-.face-primary-try-it-out,
-.face-secondary-try-it-out {
-  display: block;
-  padding: 0 60px;
-  line-height: 40px;
-  transition: margin 0.4s;
-}
-
-.face-primary-try-it-out {
-  background-color: #902bf5;
-  color: #fff;
-}
-
-a:hover .face-primary-try-it-out {
-  margin-top: -40px;
+  padding: 5%;
 }
 
 /*Resume --------------------------*/
