@@ -536,14 +536,13 @@ a:visited {
   margin-bottom: 40px;
 }
 .project-container {
-  height: 1400px;
-  min-height: 1400px;
+  height: 100%;
   width: 100%;
   min-width: 30%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 20%;
+  margin-top: 25%;
   margin-left: 0%;
   margin-bottom: 5%;
   align-items: center;
@@ -644,19 +643,21 @@ a:hover .face-primary-try-it-out {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 5%;
   margin-left: 0%;
-  height: 15%;
+  height: 50%;
   min-height: 10%;
-  max-height: 20%;
-  min-width: 40%;
+  max-height: 50%;
+  width: 100%;
+  min-width: 100px;
   max-width: 100%;
+  margin-top: 14%;
 }
 
 #resume-button {
   height: 100px;
   width: 30%;
-  max-width: 40%;
+  min-width: 300px;
+  max-width: 500px;
   display: inline-block;
   border: 3px solid rgb(17, 195, 219);
   font-family: "Roboto", sans-serif;
@@ -665,7 +666,6 @@ a:hover .face-primary-try-it-out {
   text-align: center;
   text-decoration: none;
   overflow: hidden;
-  margin-top: 4%;
 }
 
 .face-primary,
@@ -692,38 +692,7 @@ a:hover .face-primary {
 
 /* Smaller screens (Mobile devices) */
 @media (max-width: 640px) {
-  html, body {
-      font-size: 50%;
-      overflow-x: hidden;
-      max-width: 100%;
-  }
   
-  h1 {
-    font: "roboto", Arial, helvetica, sans-serif;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-    color: rgb(233, 233, 233);
-  }
-  h2 {
-    font: "roboto", Arial, helvetica, sans-serif;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-    color: rgb(233, 233, 233);
-  }
-  h3 {
-    font: "roboto", Arial, helvetica, sans-serif;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-    color: rgb(233, 233, 233);
-  }
-  
-  h5 {
-    font: "roboto", Arial, helvetica, sans-serif;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-    color: rgb(233, 233, 233);
-  }
-
   .hello {
     display: flex;
     flex-direction: column;
@@ -815,15 +784,15 @@ a:hover .face-primary {
   }
  
   .close-button {
-    font-size: 24px; /* Adjust size as needed */
+    font-size: 24px; 
     cursor: pointer;
     border: none;
     background: none;
     position: absolute;
-    top: 10px; /* Adjust position as needed */
-    right: 10px; /* Adjust position as needed */
-    color: #333; /* Adjust color to match your design */
-    z-index: 30; /* Ensure it's on top */
+    top: 10px;
+    right: 10px; 
+    color: #333; 
+    z-index: 30; 
 }
 
   .logo {
@@ -838,20 +807,20 @@ a:hover .face-primary {
     position: fixed;
     z-index: 20;
     top: 0;
-    right: 0; /* Align to the right side */
-    width: 250px; /* Width of the sliding menu */
-    height: 100vh; /* Full height */
-    background-color: rgb(255, 255, 255); /* Background color */
-    box-shadow: -4px 0 8px rgba(0,0,0,0.1); /* Optional: adds shadow for better visibility */
-    transform: translateX(100%); /* Start hidden off-screen */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for sliding effect */
-    padding: 20px; /* Some padding */
-    display: none; /* Hidden by default */
+    right: 0; 
+    width: 250px; 
+    height: 100vh; 
+    background-color: rgb(255, 255, 255); 
+    box-shadow: -4px 0 8px rgba(0,0,0,0.1); 
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out; 
+    padding: 20px; 
+    display: none; 
 }
 
   .hamburger-list.show {
     display: block;
-    transform: translateX(0); /* Move into view */
+    transform: translateX(0);
 }
 
   .hamburger-list li a{
@@ -920,6 +889,7 @@ a:hover .face-primary {
     align-items: center;
     margin-top: 0;
     margin-right: 0;
+    overflow-y: hidden;
   }
   
   .profile-pic-background {
@@ -1003,8 +973,8 @@ a:hover .face-primary {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;      /* Centers children horizontally in the container */
-    height: auto;            /* Use full viewport height to ensure vertical centering in the viewport */
+    align-items: center;
+    height: auto; 
     width: 100%;  
     margin-top: 0rem;
     margin-left: 0rem;
@@ -1059,6 +1029,7 @@ a:hover .face-primary {
   align-items: center;
   margin-top: 0rem;
   min-height: 800px;
+  overflow-y: hidden;
 }
 #about-me-title h1{
   font-size: 5rem;
@@ -1204,13 +1175,15 @@ a:hover .face-primary {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0;
-  margin-left: 0%;
+  margin-top: 20px;
   margin-bottom: 6rem;
-  min-height: 300px;
-  max-height: 500px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 }
+#resume-button {
 
+}
 }
 
 
@@ -1630,23 +1603,13 @@ position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2%;
-  margin-left: 0%;
+  margin-top: 1%;
   margin-bottom: 4rem;
-  padding: 0;
-  min-height: 100px;
 }
 
 /* Media Queries for larger screens */
 @media (min-width: 1200px) {
-  .sub-container-resume {
-    margin-top: 20%;
-  }
-
-  #resume-button {
-    width: 20%;
-    max-width: 25%;
-  }
+ 
 }
 
 }
