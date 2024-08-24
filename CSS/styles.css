@@ -473,7 +473,7 @@ a:visited {
 }
 /*About Me --------------------------*/
 .about-me-section {
-  height: 600px;
+  height: 700px;
   min-height: 600px;
   width: 100%;
   max-width: 100%;
@@ -566,7 +566,7 @@ a:visited {
 }
 .project-container-1, .project-container-2, .project-container-3 {
   height: auto;
-  width: 58%;
+  width: 50%;
   display: flex;
   border: 1px solid black;
   margin-bottom: 60px;
@@ -1046,7 +1046,7 @@ a:hover .face-primary {
   justify-content: center;
   align-items: center;
   margin-top: 0rem;
-  min-height: 1100px;
+  min-height: 1400px;
   padding: 5%;
   
   }
