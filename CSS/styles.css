@@ -653,7 +653,7 @@ a:visited {
 }
 .project-1-description, .project-2-description, .project-3-description {
   padding: 2rem;
-  font-size: clamp(1.3rem, 1vw, 1.6rem);
+  font-size: clamp(1.4rem, 1.2vw, 1.8rem);
 }
 .project-container-1, .project-container-2, .project-container-3 {
   height: auto;
