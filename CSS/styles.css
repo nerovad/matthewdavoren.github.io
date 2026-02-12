@@ -43,30 +43,25 @@
 h1 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 h2 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 h3 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 h5 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 p {
   font: "roboto", Arial, helvetica, sans-serif;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 html,
@@ -524,7 +519,7 @@ a:visited {
 @keyframes jumpAndColor {
   0%, 100% {
     transform: translateY(0);
-    color: black;
+    color: rgb(233, 233, 233);
   }
   50% {
     transform: translateY(-20px);
@@ -587,8 +582,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  animation: fade-in-about-1 4s 3s ease forwards;
 }
 @keyframes fade-in-about-1 {
   0% {
@@ -608,6 +601,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 0 5%;
 }
 .aboutme-description {
   font-size: 20px;
@@ -615,15 +609,16 @@ a:visited {
   margin-left: 0rem;
   margin-right: 0rem;
   line-height: 1.6;
-  opacity: 0;
-
-  animation: fade-in-about-1 4s 3s ease forwards;
 }
 
 .aboutme-description a{
   font-style: italic;
   font-weight: bold;
   color: rgb(233, 233, 233);
+  transition: color 0.2s ease;
+}
+.aboutme-description a:hover {
+  color: #902bf5;
 }
 .profile-pic-about {
   width: 25%;
@@ -633,9 +628,8 @@ a:visited {
   margin-top: 0%;
   margin-bottom: 0%;
   position: relative;
-  opacity: 0;
-
-  animation: fade-in-about-1 4s 3s ease forwards;
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 /*Projects --------------------------*/
@@ -659,7 +653,7 @@ a:visited {
 }
 .project-1-description, .project-2-description, .project-3-description {
   padding: 2rem;
-  font-size: 1vw;
+  font-size: clamp(1.3rem, 1vw, 1.6rem);
 }
 .project-container-1, .project-container-2, .project-container-3 {
   height: auto;
@@ -669,6 +663,11 @@ a:visited {
   margin-bottom: 60px;
   box-shadow: 15px 15px 30px rgb(0, 0, 0);
   border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-container-1:hover, .project-container-2:hover, .project-container-3:hover {
+  transform: translateY(-4px);
+  box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.6);
 }
 .project-1, .project-2, .project-3 {
   display: flex;
@@ -685,6 +684,10 @@ a:visited {
   font-weight: bold;
   text-decoration: none;
   margin-top: 2rem;
+  transition: color 0.2s ease;
+}
+.project-1 a:hover, .project-2 a:hover, .project-3 a:hover {
+  color: #902bf5;
 }
 .project-1-side-image, .project-2-side-image, .project-3-side-image {
   display: flex;
@@ -797,6 +800,48 @@ a:hover .face-primary {
   margin-top: -100px;
 }
 
+/* Scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+
+/* Footer */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem 3rem;
+  margin-top: 8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-links {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+.footer-links a {
+  color: rgba(235, 235, 235, 0.6);
+  text-decoration: none;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-copy {
+  font-size: 1.2rem;
+  color: rgba(235, 235, 235, 0.4);
+}
 
 /* Smaller screens (Mobile devices) */
 @media (max-width: 640px) {
@@ -899,15 +944,15 @@ a:hover .face-primary {
   }
  
   .close-button {
-    font-size: 24px; 
+    font-size: 24px;
     cursor: pointer;
     border: none;
     background: none;
     position: absolute;
     top: 10px;
-    right: 10px; 
-    color: #333; 
-    z-index: 30; 
+    right: 10px;
+    color: rgba(235, 235, 235, 0.85);
+    z-index: 30;
 }
 
   .logo {
@@ -922,15 +967,18 @@ a:hover .face-primary {
     position: fixed;
     z-index: 20;
     top: 0;
-    right: 0; 
-    width: 250px; 
-    height: 100vh; 
-    background-color: rgb(255, 255, 255); 
-    box-shadow: -4px 0 8px rgba(0,0,0,0.1); 
-    transform: translateX(100%); 
-    transition: transform 0.3s ease-in-out; 
-    padding: 20px; 
-    display: none; 
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    display: none;
 }
 
   .hamburger-list.show {
@@ -939,7 +987,7 @@ a:hover .face-primary {
 }
 
   .hamburger-list li a{
-    color: rgb(8, 8, 8);
+    color: rgba(235, 235, 235, 0.85);
     font-size: 1.5rem;
     text-decoration: none;
     font: "roboto", Arial, helvetica, sans-serif;
@@ -950,11 +998,11 @@ a:hover .face-primary {
     padding: 20px;
     font: "roboto", Arial, helvetica, sans-serif;
     font-weight: bold;
-    color: #030303;
+    color: rgba(235, 235, 235, 0.85);
   }
 
   .hamburger-list li a:hover {
-    color: rgb(83, 83, 83);
+    color: #fff;
     cursor: pointer;
   }
 
@@ -1299,6 +1347,17 @@ a:hover .face-primary {
 #resume-button {
 font-size: 3rem;
 }
+
+.site-footer {
+  margin-top: 4rem;
+  padding: 3rem 1.5rem 2rem;
+}
+.footer-links {
+  gap: 2rem;
+}
+.footer-links a {
+  font-size: 1.2rem;
+}
 }
 
 
@@ -1313,26 +1372,22 @@ font-size: 3rem;
 h1 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 h2 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 h3 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 
 h5 {
   font: "roboto", Arial, helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: var(--color-primary);
   color: rgb(233, 233, 233);
 }
 
@@ -1426,15 +1481,15 @@ h5 {
 }
 
 .close-button {
-  font-size: 24px; /* Adjust size as needed */
+  font-size: 24px;
   cursor: pointer;
   border: none;
   background: none;
   position: absolute;
-  top: 10px; /* Adjust position as needed */
-  right: 10px; /* Adjust position as needed */
-  color: #333; /* Adjust color to match your design */
-  z-index: 30; /* Ensure it's on top */
+  top: 10px;
+  right: 10px;
+  color: rgba(235, 235, 235, 0.85);
+  z-index: 30;
 }
 
 .logo {
@@ -1449,24 +1504,27 @@ h5 {
   position: fixed;
   z-index: 20;
   top: 0;
-  right: 0; /* Align to the right side */
-  width: 250px; /* Width of the sliding menu */
-  height: 100vh; /* Full height */
-  background-color: rgb(255, 255, 255); /* Background color */
-  box-shadow: -4px 0 8px rgba(0,0,0,0.1); /* Optional: adds shadow for better visibility */
-  transform: translateX(100%); /* Start hidden off-screen */
-  transition: transform 0.3s ease-in-out; /* Smooth transition for sliding effect */
-  padding: 20px; /* Some padding */
-  display: none; /* Hidden by default */
+  right: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  padding: 20px;
+  display: none;
 }
 
 .hamburger-list.show {
   display: block;
-  transform: translateX(0); /* Move into view */
+  transform: translateX(0);
 }
 
 .hamburger-list li a{
-  color: rgb(8, 8, 8);
+  color: rgba(235, 235, 235, 0.85);
   font-size: 1.5rem;
   text-decoration: none;
   font: "roboto", Arial, helvetica, sans-serif;
@@ -1477,11 +1535,11 @@ h5 {
   padding: 20px;
   font: "roboto", Arial, helvetica, sans-serif;
   font-weight: bold;
-  color: #030303;
+  color: rgba(235, 235, 235, 0.85);
 }
 
 .hamburger-list li a:hover {
-  color: rgb(83, 83, 83);
+  color: #fff;
   cursor: pointer;
 }
 

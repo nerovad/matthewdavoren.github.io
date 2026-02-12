@@ -71,3 +71,22 @@ function smoothScroll(target) {
   });
 }
 
+// Scroll-triggered animations
+var scrollObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+      scrollObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+  scrollObserver.observe(el);
+  // Clear transition-delay after reveal so hover effects are snappy
+  el.addEventListener('transitionend', function handler() {
+    el.style.transitionDelay = '0s';
+    el.removeEventListener('transitionend', handler);
+  });
+});
+

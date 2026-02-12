@@ -34,7 +34,7 @@
                     <ul class="contact-list">
                         <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
                         <li><a href="https://github.com/nerovad" target="_blank">GITHUB</a></li>
-                        <li><a href=mailto:“matthewdavoren@gmail.com target="_blank">EMAIL</a></li>
+                        <li><a href="mailto:matthewdavoren@gmail.com" target="_blank">EMAIL</a></li>
                     </ul>
                     <ul class="hamburger-list">
                         <button class="close-button">&#10005;</button>
@@ -43,7 +43,7 @@
                         <li><a href="#" onclick="smoothScroll('#resume-button');">RESUMÉ</a></li>
                         <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
                         <li><a href="https://github.com/nerovad" target="_blank">GITHUB</a></li>
-                        <li><a href=mailto:“matthewdavoren@gmail.com target="_blank">EMAIL</a></li>
+                        <li><a href="mailto:matthewdavoren@gmail.com" target="_blank">EMAIL</a></li>
                     </ul>
                 </div>
         </div>
@@ -78,23 +78,18 @@
         <div class="scroll-line-1"><style></style></div>
     </div>
     <div class="about-me-section">
-        <div id="about-me-title">
+        <div id="about-me-title" class="animate-on-scroll">
             <h1>Let's Work Together</h1>
         </div>
-        <div class="about-me-p-img">
-        <p class="aboutme-description">I am a dedicated engineer with a passion for writing clean, efficient<br>
-            code and automating processes. I thrive on designing workflows that<br>
-            enhance productivity and streamline operations.<br><br> 
-            
-            As a very curious tech enthusiast, I am constantly exploring new<br>
-            projects to optimize daily tasks for myself and my team. I'm a big<br>
-            believer in the saying, sometimes you have to break something down to<br>
-            build something better.<br><br>
-            
-            Stuff I probably spend too much time on: hacking together Linux<br>  
-            configs, customizing Neovim with LazyVim, building media servers,<br> 
-            the occasional PC or Switch game and making cartoons.<br><br>
-
+        <div class="about-me-p-img animate-on-scroll delay-1">
+        <p class="aboutme-description">I’m a dedicated engineer who loves writing clean, efficient code 
+            and building systems that eliminate friction. I focus on designing workflows and internal 
+            tools that increase productivity, reduce manual effort, and make teams move faster.<br><br>
+            Curious by nature, I’m always exploring new technologies and experimenting with ideas from 
+            Linux and tiling window managers to building a live television platform and running a Friday 
+            night film festival online. I also create 2D animations and develop tooling to automate parts 
+            of that process.<br><br>
+            I build because I genuinely enjoy solving problems.<br><br>
             Check out my <a href="#" onclick="smoothScroll('#projects-title');">Projects</a>
             and <a href="#" onclick="smoothScroll('#resume-button')">Resumé</a> for more!
         </p>
@@ -104,10 +99,10 @@
         
         
         <div class="project-container">
-            <div id="projects-title">
+            <div id="projects-title" class="animate-on-scroll">
                 <h1>Recent Projects</h1>
             </div>
-            <div class="project-container-1">
+            <div class="project-container-1 animate-on-scroll delay-1">
             <div class="project-1"><a href="https://github.com/nerovad/Paperboy" target=”_blank”>Paperboy</a>
             <div class="project-1-description">Paperboy is an enterprise workflow platform in Rails 8 featuring configurable multi-step routing,
                 status lifecycle management, and event-driven notifications via a Sidekiq/Redis job processing
@@ -133,7 +128,7 @@
                 <img src="../images/matthewdavoren_ServerPic.svg" alt="Server Room Image">
             </div>
         </div>
-        <div class="project-container-2">
+        <div class="project-container-2 animate-on-scroll delay-1">
             <div class="project-2"><a href="https://github.com/nerovad/Cinezoo" target=”_blank”>Cinezoo</a>
                 <div class="project-2-description">Cinezoo is a live, channel-based streaming and film festival 
               platform that blends internet TV with creative competition, letting users create channels, stream 
@@ -160,7 +155,7 @@
             <img src="../images/color_bars_Login.jpg" alt="Television Image">
         </div>
         </div>
-        <div class="project-container-3">
+        <div class="project-container-3 animate-on-scroll delay-1">
             <div class="project-3"><a href="https://github.com/nerovad/cartoonBackgrounds" target=”_blank”>Cartoon Backgrounds</a>
                 <div class="project-3-description">Built a generative AI pipeline that fine-tunes Stable Diffusion v1.5 using LoRA 
               (Low-Rank Adaptation) to produce 90s cartoon-style background images from text prompts. The project includes a custom 
@@ -189,7 +184,7 @@
     </div>
 </div>
 
-        <div class="sub-container-resume">
+        <div class="sub-container-resume animate-on-scroll">
             <a id="resume-button" href="../PDF/Matthew_Davoren_Resume_02032026.pdf" target="_blank">
 
                 <div class="face-primary">
@@ -202,8 +197,17 @@
               
               </a>
         </div>
-    
-</div>      
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a>
+                <a href="https://github.com/nerovad" target="_blank">GITHUB</a>
+                <a href="mailto:matthewdavoren@gmail.com">EMAIL</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Matthew Davoren</p>
+        </footer>
+
+</div>
     <script src="../JS/script.js"></script>  
 </body>
 </html>
