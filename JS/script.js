@@ -1,75 +1,98 @@
+var menu = document.querySelector('.menu-items');
+var menuButton = document.querySelector('.menu-toggle-button');
+var contact = document.querySelector('.contact-list');
+var contactButton = document.querySelector('.contact-button');
+var hamburgerList = document.querySelector('.hamburger-list');
+var hamburgerButton = document.querySelector('.hamburger-button');
+var closeButton = document.querySelector('.close-button');
+
+function closeMenu() {
+  menu.classList.remove('dropdown-open');
+  menuButton.textContent = 'NAVIGATION';
+  menuButton.setAttribute('aria-expanded', 'false');
+}
+
+function closeContact() {
+  contact.classList.remove('dropdown-open');
+  contactButton.textContent = 'CONTACT';
+  contactButton.setAttribute('aria-expanded', 'false');
+}
+
+function closeHamburger() {
+  hamburgerList.classList.remove('show');
+  hamburgerButton.setAttribute('aria-expanded', 'false');
+  hamburgerButton.setAttribute('aria-label', 'Open menu');
+}
+
 function toggleMenu() {
-  var menu = document.querySelector('.menu-items');
-  var button = document.querySelector('.menu-toggle-button');
-  var contact = document.querySelector('.contact-list');
-  var contactButton = document.querySelector('.contact-button');
-
-  // Close contact if open
-  if (contact.classList.contains('dropdown-open')) {
-    contact.classList.remove('dropdown-open');
-    contactButton.textContent = 'CONTACT';
-  }
-
-  menu.classList.toggle('dropdown-open');
-  button.textContent = menu.classList.contains('dropdown-open') ? 'CLOSE' : 'NAVIGATION';
+  closeContact();
+  var open = menu.classList.toggle('dropdown-open');
+  menuButton.textContent = open ? 'CLOSE' : 'NAVIGATION';
+  menuButton.setAttribute('aria-expanded', String(open));
 }
 
 function toggleContact() {
-  var contact = document.querySelector('.contact-list');
-  var contactButton = document.querySelector('.contact-button');
-  var menu = document.querySelector('.menu-items');
-  var menuButton = document.querySelector('.menu-toggle-button');
-
-  // Close menu if open
-  if (menu.classList.contains('dropdown-open')) {
-    menu.classList.remove('dropdown-open');
-    menuButton.textContent = 'NAVIGATION';
-  }
-
-  contact.classList.toggle('dropdown-open');
-  contactButton.textContent = contact.classList.contains('dropdown-open') ? 'CLOSE' : 'CONTACT';
+  closeMenu();
+  var open = contact.classList.toggle('dropdown-open');
+  contactButton.textContent = open ? 'CLOSE' : 'CONTACT';
+  contactButton.setAttribute('aria-expanded', String(open));
 }
+
+// Driven by the .show class rather than inline styles, so the panel stays
+// governed by the stylesheet — including the `display: none` that hides it
+// above the mobile breakpoint if the window is resized while it is open.
+function toggleHamburger() {
+  var open = hamburgerList.classList.toggle('show');
+  hamburgerButton.setAttribute('aria-expanded', String(open));
+  hamburgerButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+
+closeButton.addEventListener('click', closeHamburger);
 
 // Close dropdowns when clicking outside
 document.addEventListener('click', function (e) {
-  var menu = document.querySelector('.menu-items');
-  var menuBtn = document.querySelector('.menu-toggle-button');
-  var contact = document.querySelector('.contact-list');
-  var contactBtn = document.querySelector('.contact-button');
+  if (!(e.target instanceof Element)) return;
 
   if (!e.target.closest('.menu-button-container') && menu.classList.contains('dropdown-open')) {
-    menu.classList.remove('dropdown-open');
-    menuBtn.textContent = 'NAVIGATION';
+    closeMenu();
   }
   if (!e.target.closest('.contact-button-container') && contact.classList.contains('dropdown-open')) {
-    contact.classList.remove('dropdown-open');
-    contactBtn.textContent = 'CONTACT';
+    closeContact();
+  }
+  if (!e.target.closest('.hamburger-list') && !e.target.closest('.hamburger-button') &&
+      hamburgerList.classList.contains('show')) {
+    closeHamburger();
   }
 });
 
-function toggleHamburger() {
-  var hamburgerList = document.querySelector('.hamburger-list');
-
-  if (hamburgerList.style.transform === 'translateX(0px)') {
-    hamburgerList.style.transform = 'translateX(100%)'; // Move out of view
-  } else {
-    hamburgerList.style.display = 'block'; // Ensure it's block before sliding in
-    hamburgerList.style.transform = 'translateX(0px)'; // Slide into view
-  }
-}
-
-document.querySelector('.close-button').addEventListener('click', function () {
-  var hamburgerList = document.querySelector('.hamburger-list');
-  var hamburgerButton = document.querySelector('.hamburger-button');
-  hamburgerList.style.transform = 'translateX(100%)'; // Slide out of view
-  hamburgerButton.style.transform = 'translateX(0px)'; // Reset button position
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape') return;
+  closeMenu();
+  closeContact();
+  closeHamburger();
 });
 
-function smoothScroll(target) {
-  document.querySelector(target).scrollIntoView({
-    behavior: 'smooth'
-  });
-}
+// In-page links scroll smoothly instead of jumping, and close whichever menu
+// was used to trigger them. Keeping the real fragment in the href means the
+// links still work if this script fails to load.
+document.addEventListener('click', function (e) {
+  if (!(e.target instanceof Element)) return;
+
+  var link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+
+  var id = link.getAttribute('href');
+  if (id === '#') return;
+
+  var target = document.querySelector(id);
+  if (!target) return;
+
+  e.preventDefault();
+  closeMenu();
+  closeContact();
+  closeHamburger();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 
 // Scroll-triggered animations
 var scrollObserver = new IntersectionObserver(function (entries) {
@@ -89,4 +112,3 @@ document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
     el.removeEventListener('transitionend', handler);
   });
 });
-

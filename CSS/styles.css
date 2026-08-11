@@ -13,60 +13,37 @@
   padding: 0;
 }
 /* Typography */
-@font-face {
-  font-family: "opensans";
-  src: url("fonts/open-sans/opensans-bold-webfont.woff2") format("woff2"),
-    url("fonts/open-sans/opensans-bold-webfont.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: optional;
-}
-@font-face {
-  font-family: "opensans";
-  src: url("fonts/open-sans/opensans-regular-webfont.woff2") format("woff2"),
-    url("fonts/open-sans/opensans-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: optional;
-}
-@font-face {
-  font-family: "opensans";
-  src: url("fonts/open-sans/opensans-italic-webfont.woff2") format("woff2"),
-    url("fonts/open-sans/opensans-italic-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: optional;
-}
 .Description {
   font-weight: bold;
 }
 h1 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 h2 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 h3 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 h5 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 p {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: rgb(233, 233, 233);
 }
 html,
 body {
   font-size: 62.5%;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 .container-home {
   overflow-y: auto;
@@ -325,6 +302,10 @@ a:visited {
   background: none;
   border: none;
 }
+.hamburger-list ul {
+  list-style: none;
+  margin-top: 3rem; /* clears the absolutely positioned close button */
+}
 /*Home Page --------------------------*/
 .index-content {
   max-height: 100vh;
@@ -482,7 +463,10 @@ a:visited {
 
   animation: fade-in-scroll-1 6s
 }
-.scroll-word-1 span {
+/* Only the per-letter spans animate — matching the wrapper too made the whole
+   word jump in unison and cancelled out the staggered wave. */
+.scroll-word-1 span span {
+  display: inline-block; /* transform has no effect on a purely inline box */
   opacity: 1;
   animation: jumpAndColor 5s ease-in-out infinite;
 }
@@ -636,7 +620,9 @@ a:visited {
   margin-bottom: 40px;
 }
 .project-container {
-  height: 100%;
+  /* `height: 100%` + `justify-content: center` made content taller than the
+     box overflow symmetrically — i.e. upward, over the About section. */
+  min-height: 100%;
   width: 100%;
   min-width: 30%;
   max-width: 100%;
@@ -714,7 +700,9 @@ a:visited {
   border-radius: 0rem 1rem 1rem 0rem ;
 }
 .try-it-out-container {
-  height: 40px;
+  --face-height: 40px;
+  box-sizing: content-box; /* height is the visible face, borders sit outside it */
+  height: var(--face-height);
   display: inline-block;
   border: 3px solid #902bf5;
   font-family: "Roboto", sans-serif;
@@ -724,6 +712,8 @@ a:visited {
   margin-bottom: 5%;
 }
 .try-it-out-container a {
+  display: block;
+  margin-top: 0; /* override the 2rem from `.project-1 a` — it would push the face out of frame */
   font-size: 17px;
   font-weight: 500;
   text-align: center;
@@ -732,8 +722,10 @@ a:visited {
 .face-primary-try-it-out,
 .face-secondary-try-it-out {
   display: block;
-  padding: 0 60px;
-  line-height: 40px;
+  padding: 0 2rem;
+  min-width: 220px;
+  line-height: var(--face-height);
+  white-space: nowrap;
   transition: margin 0.4s;
 }
 
@@ -741,9 +733,14 @@ a:visited {
   background-color: #902bf5;
   color: #fff;
 }
+.face-secondary-try-it-out {
+  background-color: rgb(241, 241, 241);
+  color: #030303;
+}
 
-a:hover .face-primary-try-it-out {
-  margin-top: -40px;
+.try-it-out-button:hover .face-primary-try-it-out,
+.try-it-out-button:focus-visible .face-primary-try-it-out {
+  margin-top: calc(var(--face-height) * -1);
 }
 /*Resume --------------------------*/
 
@@ -763,13 +760,15 @@ a:hover .face-primary-try-it-out {
 }
 
 #resume-button {
-  height: 100px;
+  --face-height: 100px;
+  box-sizing: content-box; /* height is the visible face, borders sit outside it */
+  height: var(--face-height);
   width: 30%;
   min-width: 300px;
   max-width: 500px;
   display: inline-block;
   border: 3px solid rgb(17, 195, 219);
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: 500;
   text-align: center;
@@ -780,8 +779,9 @@ a:hover .face-primary-try-it-out {
 .face-primary,
 .face-secondary {
   display: block;
-  padding: 0 60px;
-  line-height: 100px;
+  padding: 0 2rem;
+  line-height: var(--face-height);
+  white-space: nowrap;
   transition: margin 0.4s;
 }
 
@@ -794,8 +794,9 @@ a:hover .face-primary-try-it-out {
   color: #030303;
 }
 
-a:hover .face-primary {
-  margin-top: -100px;
+#resume-button:hover .face-primary,
+#resume-button:focus-visible .face-primary {
+  margin-top: calc(var(--face-height) * -1);
 }
 
 /* Scroll-triggered animations */
@@ -929,16 +930,20 @@ a:hover .face-primary {
 
   .hamburger-button{
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     color: rgb(235, 235, 235);
-    font-size: 6rem;
+    font-size: 3.2rem;
+    line-height: 1;
     background: none;
     cursor: pointer;
     border: none;
     order: 1;
-    padding: 40px;
+    padding: 1rem 2rem;
     margin-top: 0rem;
+    margin-right: 1rem;
     z-index: 8;
+    transition: color 0.2s ease;
   }
  
   .close-button {
@@ -974,13 +979,15 @@ a:hover .face-primary {
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.3s;
     padding: 20px;
-    display: none;
+    display: block;
+    visibility: hidden;
 }
 
   .hamburger-list.show {
     display: block;
+    visibility: visible;
     transform: translateX(0);
 }
 
@@ -988,13 +995,13 @@ a:hover .face-primary {
     color: rgba(235, 235, 235, 0.85);
     font-size: 1.5rem;
     text-decoration: none;
-    font: "roboto", Arial, helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     background: none;
     padding: 0px;
   }
   .hamburger-list li {
     padding: 20px;
-    font: "roboto", Arial, helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: rgba(235, 235, 235, 0.85);
   }
@@ -1017,7 +1024,7 @@ a:hover .face-primary {
     color: rgb(8, 8, 8);
     font-size: 0rem;
     text-decoration: none;
-    font: "roboto", Arial, helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: #d6d6d6;
     padding: 0px;
   }
@@ -1032,7 +1039,7 @@ a:hover .face-primary {
     color: rgb(19, 19, 19);
     font-size: 0rem;
     text-decoration: none;
-    font: "roboto", Arial, helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: #d6d6d6;
     display: none;
     padding: 0px;
@@ -1259,8 +1266,8 @@ a:hover .face-primary {
     font-size: 3vw;
 }
   .project-container-1, .project-container-2, .project-container-3{
-    height: 600px;
-    width: 400px;
+    height: auto;
+    width: min(400px, calc(100vw - 3rem)); /* fixed 400px overflowed narrow phones */
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -1273,7 +1280,7 @@ a:hover .face-primary {
     display: flex;
     flex-direction: column;
     color: black;
-    height: 50%;
+    height: auto; /* 50% of a fixed height clipped the longer descriptions */
     width: 100%;
     align-items: center;
     background-color: whitesmoke;
@@ -1284,51 +1291,35 @@ a:hover .face-primary {
   }
   .project-1-side-image, .project-2-side-image, .project-3-side-image, .project-4-side-image {
     width: 100%;
-    height: 50%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .project-1-side-image img, .project-3-side-image img{
-    height: 94%;
-  }
-.project-1-side-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-  .project-1-side-image img {
-    width: 398px;
-  }
-
-  .project-2-side-image img {
-    width: 398px;
-    height: 300px;
-  }
-
-  .project-3-side-image img {
-    width: 398px;
-  }
-
+  /* Images are the bottom half of a stacked card here, so they fill the width
+     and round the bottom corners instead of the right-hand ones. */
+  .project-1-side-image img,
+  .project-2-side-image img,
+  .project-3-side-image img,
   .project-4-side-image img {
-    width: 398px;
-    height: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 0rem 0rem 1rem 1rem;
   }
 
   .try-it-out-container {
-    height: 40px;
-    display: inline-block;
-    border: 3px solid #902bf5;
-    font-family: "Roboto", sans-serif;
-    overflow: hidden;
+    --face-height: 48px; /* comfortable touch target */
+    max-width: calc(100% - 3rem);
     margin-top: 4rem;
     margin-left: 1.5rem;
   }
   .try-it-out-container a {
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-    text-decoration: none;
+    font-size: 1.4rem;
+  }
+  .face-primary-try-it-out,
+  .face-secondary-try-it-out {
+    min-width: 0;
+    padding: 0 1.5rem;
   }
 
   /*Resume --------------------------*/
@@ -1368,23 +1359,23 @@ font-size: 3rem;
 }
 
 h1 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 h2 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 h3 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
 
 h5 {
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
   color: rgb(233, 233, 233);
 }
@@ -1466,16 +1457,20 @@ h5 {
 
 .hamburger-button{
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   color: rgb(235, 235, 235);
-  font-size: 6rem;
+  font-size: 3.2rem;
+  line-height: 1;
   background: none;
   cursor: pointer;
   border: none;
   order: 1;
-  padding: 40px;
+  padding: 1rem 2rem;
   margin-top: 0rem;
+  margin-right: 1rem;
   z-index: 8;
+  transition: color 0.2s ease;
 }
 
 .close-button {
@@ -1511,13 +1506,15 @@ h5 {
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, visibility 0.3s;
   padding: 20px;
-  display: none;
+  display: block;
+  visibility: hidden;
 }
 
 .hamburger-list.show {
   display: block;
+  visibility: visible;
   transform: translateX(0);
 }
 
@@ -1525,13 +1522,13 @@ h5 {
   color: rgba(235, 235, 235, 0.85);
   font-size: 1.5rem;
   text-decoration: none;
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   background: none;
   padding: 0px;
 }
 .hamburger-list li {
   padding: 20px;
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: rgba(235, 235, 235, 0.85);
 }
@@ -1554,7 +1551,7 @@ h5 {
   color: rgb(8, 8, 8);
   font-size: 0rem;
   text-decoration: none;
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: #d6d6d6;
   padding: 0px;
 }
@@ -1569,7 +1566,7 @@ h5 {
   color: rgb(19, 19, 19);
   font-size: 0rem;
   text-decoration: none;
-  font: "roboto", Arial, helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: #d6d6d6;
   display: none;
   padding: 0px;
@@ -1766,6 +1763,35 @@ position: relative;
   margin-top: 0%;
   margin-bottom: 0%;
 }
+/* The base two-column card is 50% of the viewport here, which left the text
+   side under ~300px wide. Go full-width and stack instead. */
+.project-container-1, .project-container-2, .project-container-3 {
+  flex-direction: column;
+  width: min(560px, calc(100vw - 4rem));
+  height: auto;
+}
+.project-1, .project-2, .project-3 {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+.project-1 a, .project-2 a, .project-3 a {
+  font-size: 3.4rem;
+}
+.project-1-description, .project-2-description, .project-3-description {
+  font-size: 1.8rem;
+}
+.project-1-side-image, .project-2-side-image, .project-3-side-image {
+  width: 100%;
+  height: auto;
+}
+.project-1-side-image img,
+.project-2-side-image img,
+.project-3-side-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
 .project-container-3 {
   margin-bottom: 0;
 }
@@ -1778,9 +1804,54 @@ position: relative;
   margin-bottom: 4rem;
 }
 
-/* Media Queries for larger screens */
-@media (min-width: 1200px) {
- 
 }
 
+/* ---------------------------------------------------------------------------
+   Keyboard focus
+   Buttons and links had no visible focus state at all, so tabbing through the
+   nav gave no indication of where you were.
+   --------------------------------------------------------------------------- */
+/* The header is fixed, so in-page scroll targets need to stop clear of it
+   instead of landing underneath. The extra room absorbs the 24px the
+   reveal animation lifts these sections by once they come into view. */
+#about-me-title,
+#projects-title,
+#resume-button {
+  scroll-margin-top: 11rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #902bf5;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   The page opens with several entrance animations and keeps a looping one
+   running forever. Honour the OS-level "reduce motion" setting.
+   Several elements are only made visible *by* their animation (the profile pic
+   fades in from opacity 0, the scroll line grows from height 0), so those need
+   their finished state restored explicitly rather than just having motion cut.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .profile-pic {
+    opacity: 1;
+  }
+  .scroll-line-1 {
+    height: 50rem;
+  }
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
 }
