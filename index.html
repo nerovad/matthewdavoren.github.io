@@ -21,6 +21,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/styles.css"/>
+
+    <!-- Applies a saved light-mode preference before the first paint, so the
+         page never flashes dark on its way to light. Dark is the default and
+         needs no attribute. -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
 </head>
 <body>
     <div class="container-home"> 
@@ -41,9 +54,28 @@
                 </div>
             </div>
                 <div class="contact-button-container">
+<<<<<<< HEAD
                     <button class="contact-button" type="button" aria-expanded="false" aria-controls="contact-menu" onclick="toggleContact()">CONTACT</button>
                     <button class="hamburger-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleHamburger()">&#9776;</button>
                     <ul class="contact-list" id="contact-menu">
+||||||| 59115e5
+                    <button class="contact-button" onclick="toggleContact()">CONTACT</button>
+                    <button class="hamburger-button" onclick="toggleHamburger()">&#9776;</button>
+                    <ul class="contact-list">
+=======
+                    <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode" onclick="toggleTheme()">
+                        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="12" r="4.2"></circle>
+                            <path d="M12 2.4v2.6M12 19v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2.4 12h2.6M19 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"></path>
+                        </svg>
+                        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"></path>
+                        </svg>
+                    </button>
+                    <button class="contact-button" type="button" aria-expanded="false" aria-controls="contact-menu" onclick="toggleContact()">CONTACT</button>
+                    <button class="hamburger-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleHamburger()">&#9776;</button>
+                    <ul class="contact-list" id="contact-menu">
+>>>>>>> fix/site-bugs-and-accessibility
                         <li><a href="https://www.linkedin.com/in/matthewmichaeldavoren/" target="_blank">LINKEDIN</a></li>
                         <li><a href="https://github.com/nerovad" target="_blank">GITHUB</a></li>
                         <li><a href="mailto:matthewdavoren@gmail.com">EMAIL</a></li>
