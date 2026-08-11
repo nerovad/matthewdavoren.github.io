@@ -320,7 +320,7 @@ a:visited {
   width: 8rem;
   margin-top: 0;
   margin-left: auto;
-  margin-right: 6rem;
+  margin-right: 1rem;
   margin-bottom: 0;
   font-size: 2rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -331,11 +331,19 @@ a:visited {
 .contact-button:hover {
   color: var(--text-hover);
 }
+/* The divider between CONTACT and the theme toggle. Reuses .vertical-line for
+   the rule itself and its grow/fade animation; only the spacing differs, so it
+   mirrors the logo | line | NAVIGATION run on the left. */
+.contact-divider {
+  margin-left: 0;
+  margin-right: 1.3rem;
+}
 /* Theme toggle ------------------------------------------------------------
-   Sits to the left of CONTACT in the flex row, which leaves that button's
-   6rem right margin -- and the dropdown anchored to it -- exactly where they
-   were. Shows the icon for the theme it will switch *to*. */
+   Sits to the right of CONTACT, past the divider, its 3rem outer margin
+   mirroring the logo's 3rem on the left. Shows the icon for the theme it will
+   switch *to*. */
 .theme-toggle {
+  margin-right: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,7 +380,9 @@ a:visited {
   padding: 0.5rem 0;
   position: absolute;
   top: calc(100% + 0.5rem);
-  right: 4rem;
+  /* Tracks CONTACT, which the divider and toggle push 3rem further from the
+     right edge than the old 4rem anchor assumed. */
+  right: 7rem;
   min-width: 180px;
   background: var(--bg-panel);
   backdrop-filter: blur(16px);
@@ -1260,6 +1270,16 @@ a:visited {
     margin-top: 0rem;
   }
 
+  /* CONTACT collapses into the hamburger here, so the divider has nothing to
+     divide and the toggle sits directly beside the hamburger. */
+  .contact-divider {
+    display: none;
+  }
+
+  .theme-toggle {
+    margin-right: 0;
+  }
+
   .menu-toggle-button {
     background:none;
     border: 0px;
@@ -1774,6 +1794,15 @@ h5 {
 
 .vertical-line {
   border-left: 0px solid var(--line);
+}
+
+/* As in the narrow breakpoint: no CONTACT, so no divider. */
+.contact-divider {
+  display: none;
+}
+
+.theme-toggle {
+  margin-right: 0;
 }
 
 .menu-toggle-button {
