@@ -5,6 +5,42 @@ var contactButton = document.querySelector('.contact-button');
 var hamburgerList = document.querySelector('.hamburger-list');
 var hamburgerButton = document.querySelector('.hamburger-button');
 var closeButton = document.querySelector('.close-button');
+var themeToggle = document.querySelector('.theme-toggle');
+var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+// Dark is the default and is represented by the absence of the attribute, so
+// the stylesheet's :root values are the dark theme and need no override.
+var THEME_COLORS = { dark: '#1b1b1b', light: '#f5f5f5' };
+
+function currentTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+}
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  if (themeColorMeta) themeColorMeta.setAttribute('content', THEME_COLORS[theme]);
+  // The control is labelled by what it will do, matching the icon it shows.
+  var label = 'Switch to ' + (theme === 'light' ? 'dark' : 'light') + ' mode';
+  themeToggle.setAttribute('aria-label', label);
+  themeToggle.setAttribute('title', label);
+}
+
+function toggleTheme() {
+  var next = currentTheme() === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  try {
+    localStorage.setItem('theme', next);
+  } catch (e) {
+    /* private browsing or storage disabled -- the theme still applies for this page */
+  }
+}
+
+// Sync the label and meta colour with whatever the inline head script settled on.
+applyTheme(currentTheme());
 
 function closeMenu() {
   menu.classList.remove('dropdown-open');

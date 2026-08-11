@@ -5,12 +5,85 @@
   --color-accent: rgb(234, 166, 18);
   --color-bg: rgb(0, 0, 0);
 
-  /* The page is dark, so ask the browser for its dark UI rendering -- without
-     this it paints a light scrollbar against the dark background. */
+  /* ---- Theme tokens -------------------------------------------------------
+     Dark is the default, so the dark values live here on :root and the light
+     theme overrides them below. Anything that sits on a fixed accent fill (the
+     white label on the purple button) stays a literal colour, because it must
+     not follow the theme. ---------------------------------------------------- */
+  --bg-page: rgb(27, 27, 27);
+  --bg-panel: rgba(30, 30, 30, 0.85);
+  --bg-panel-solid: rgba(30, 30, 30, 0.95);
+  --bg-card: whitesmoke;
+  --card-border: black;
+  --text-card: black;
+
+  --text-primary: rgb(233, 233, 233);
+  --text-strong: rgba(235, 235, 235, 0.85);
+  --text-nav: rgba(235, 235, 235, 0.8);
+  --text-muted: rgba(235, 235, 235, 0.6);
+  --text-faint: rgba(235, 235, 235, 0.4);
+  --text-hover: #fff;
+  --visited-link: rgb(219, 218, 218);
+
+  --line: rgb(255, 255, 255);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --inset-highlight: rgba(255, 255, 255, 0.05);
+
+  --shadow-strong: rgb(0, 0, 0);
+  --shadow-hover: rgba(0, 0, 0, 0.6);
+  --shadow-soft: rgba(0, 0, 0, 0.4);
+  --shadow-panel: rgba(0, 0, 0, 0.3);
+
+  --face2-bg: rgb(241, 241, 241);
+  --face2-text: #030303;
+
+  --accent: #902bf5;
+  --accent-soft: rgba(144, 43, 245, 0.12);
+  --accent-2: rgb(17, 195, 219);
+  --accent-2-soft: rgba(17, 195, 219, 0.12);
+
+  --scrollbar-thumb: rgb(78, 78, 78);
+  --scrollbar-thumb-hover: rgb(105, 105, 105);
+  --scrollbar-track: rgb(18, 18, 18);
+
+  /* Tells the browser which UI rendering to use for scrollbars and controls. */
   color-scheme: dark;
-  /* scrollbar-color is inherited, so this reaches every scroll container on
-     the page, not just the one that owns the main scrollbar. */
-  scrollbar-color: rgb(78, 78, 78) rgb(18, 18, 18);
+  /* Inherited, so this reaches every scroll container on the page. */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+:root[data-theme="light"] {
+  --bg-page: rgb(245, 245, 245);
+  --bg-panel: rgba(252, 252, 252, 0.9);
+  --bg-panel-solid: rgba(250, 250, 250, 0.97);
+  --bg-card: rgb(255, 255, 255);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --text-card: rgb(20, 20, 20);
+
+  --text-primary: rgb(28, 28, 28);
+  --text-strong: rgba(20, 20, 20, 0.85);
+  --text-nav: rgba(20, 20, 20, 0.8);
+  --text-muted: rgba(20, 20, 20, 0.6);
+  --text-faint: rgba(20, 20, 20, 0.5);
+  --text-hover: #000;
+  --visited-link: rgb(70, 70, 70);
+
+  --line: rgb(90, 90, 90);
+  --border-subtle: rgba(0, 0, 0, 0.12);
+  --inset-highlight: rgba(0, 0, 0, 0.04);
+
+  --shadow-strong: rgba(0, 0, 0, 0.18);
+  --shadow-hover: rgba(0, 0, 0, 0.25);
+  --shadow-soft: rgba(0, 0, 0, 0.15);
+  --shadow-panel: rgba(0, 0, 0, 0.15);
+
+  --face2-bg: rgb(255, 255, 255);
+
+  --scrollbar-thumb: rgb(185, 185, 185);
+  --scrollbar-thumb-hover: rgb(150, 150, 150);
+  --scrollbar-track: rgb(232, 232, 232);
+
+  color-scheme: light;
 }
 
 /* Fallback for browsers without scrollbar-color (Safari < 18, Chromium < 121).
@@ -20,15 +93,15 @@
   width: 14px;
 }
 .container-home::-webkit-scrollbar-track {
-  background: rgb(18, 18, 18);
+  background: var(--scrollbar-track);
 }
 .container-home::-webkit-scrollbar-thumb {
-  background: rgb(78, 78, 78);
-  border: 3px solid rgb(18, 18, 18);
+  background: var(--scrollbar-thumb);
+  border: 3px solid var(--scrollbar-track);
   border-radius: 8px;
 }
 .container-home::-webkit-scrollbar-thumb:hover {
-  background: rgb(105, 105, 105);
+  background: var(--scrollbar-thumb-hover);
 }
 *,
 *::before,
@@ -44,26 +117,26 @@
 h1 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 h2 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 h3 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 h5 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 p {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 html,
 body {
@@ -75,7 +148,7 @@ body {
   height: 100vh;
   width: 100%;
   max-width: 100%;
-  background-color: rgb(27, 27, 27);
+  background-color: var(--bg-page);
   background-size: cover;
   background-position-y: -3rem;
   background-repeat: no-repeat;
@@ -100,7 +173,7 @@ body {
   top: 0;
   margin-bottom: -7rem;
   width: 100%;
-  background-color: rgb(27, 27, 27);
+  background-color: var(--bg-page);
 }
 .left-side-menu {
   display: flex;
@@ -120,12 +193,12 @@ body {
   top: calc(100% + 0.5rem);
   left: 1rem;
   min-width: 180px;
-  background: rgba(30, 30, 30, 0.85);
+  background: var(--bg-panel);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   border-radius: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  box-shadow: 0 8px 32px var(--shadow-soft), 0 0 0 1px var(--inset-highlight) inset;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -151,7 +224,7 @@ body {
 .menu-items.dropdown-open li:nth-child(2) { transition-delay: 0.1s; }
 .menu-items.dropdown-open li:nth-child(3) { transition-delay: 0.15s; }
 .menu-items li a {
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
   font-size: 1.4rem;
   text-decoration: none;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -169,24 +242,24 @@ body {
   transform: translateY(-50%) scaleY(0);
   width: 3px;
   height: 60%;
-  background: #902bf5;
+  background: var(--accent);
   border-radius: 0 2px 2px 0;
   transition: transform 0.2s ease;
 }
 .menu-items li a:hover {
-  color: #fff;
-  background-color: rgba(144, 43, 245, 0.12);
+  color: var(--text-hover);
+  background-color: var(--accent-soft);
 }
 .menu-items li a:hover::before {
   transform: translateY(-50%) scaleY(1);
 }
 .menu-items li a:visited {
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
 }
 .menu-toggle-button {
   background: none;
   border: 0px;
-  color: rgba(235, 235, 235, 0.8);
+  color: var(--text-nav);
   height: 2.7rem;
   width: 8rem;
   margin-top: 0rem;
@@ -198,10 +271,10 @@ body {
   transition: color 0.2s ease;
 }
 .menu-toggle-button:hover {
-  color: #fff;
+  color: var(--text-hover);
 }
 .vertical-line {
-  border-left: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid var(--line);
   height: 4rem;
   margin-top: 0rem;
   margin-left: 1.3rem;
@@ -216,7 +289,7 @@ body {
   to{height: 4rem;}
 }
 a:visited {
-  color: rgb(219, 218, 218);
+  color: var(--visited-link);
 }
 .logo {
   height: 4.2rem;
@@ -228,6 +301,11 @@ a:visited {
 .logo:hover {
   transform: scale(1.03);
 }
+/* The logo artwork is solid #fff, so it disappears against a light page.
+   Inverting turns it black and leaves the shape untouched. */
+:root[data-theme="light"] .logo {
+  filter: invert(1);
+}
 .contact-button-container {
   position: relative; /* Needed for absolute positioning of child elements */
   display: flex;
@@ -237,7 +315,7 @@ a:visited {
 .contact-button {
   background: none;
   border: 0px;
-  color: rgba(235, 235, 235, 0.8);
+  color: var(--text-nav);
   height: 2rem;
   width: 8rem;
   margin-top: 0;
@@ -251,7 +329,43 @@ a:visited {
   transition: color 0.2s ease;
 }
 .contact-button:hover {
-  color: #fff;
+  color: var(--text-hover);
+}
+/* Theme toggle ------------------------------------------------------------
+   Sits to the left of CONTACT in the flex row, which leaves that button's
+   6rem right margin -- and the dropdown anchored to it -- exactly where they
+   were. Shows the icon for the theme it will switch *to*. */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-nav);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.theme-toggle:hover {
+  color: var(--text-hover);
+  background-color: var(--accent-soft);
+}
+.theme-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: block;
+}
+.theme-icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-icon-moon {
+  display: block;
 }
 .contact-list {
   list-style: none;
@@ -260,12 +374,12 @@ a:visited {
   top: calc(100% + 0.5rem);
   right: 4rem;
   min-width: 180px;
-  background: rgba(30, 30, 30, 0.85);
+  background: var(--bg-panel);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   border-radius: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  box-shadow: 0 8px 32px var(--shadow-soft), 0 0 0 1px var(--inset-highlight) inset;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -291,7 +405,7 @@ a:visited {
 .contact-list.dropdown-open li:nth-child(2) { transition-delay: 0.1s; }
 .contact-list.dropdown-open li:nth-child(3) { transition-delay: 0.15s; }
 .contact-list li a {
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
   font-size: 1.4rem;
   text-decoration: none;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -309,20 +423,20 @@ a:visited {
   transform: translateY(-50%) scaleY(0);
   width: 3px;
   height: 60%;
-  background: rgb(17, 195, 219);
+  background: var(--accent-2);
   border-radius: 2px 0 0 2px;
   transition: transform 0.2s ease;
 }
 .contact-list li a:hover {
-  color: #fff;
-  background-color: rgba(17, 195, 219, 0.12);
+  color: var(--text-hover);
+  background-color: var(--accent-2-soft);
   cursor: pointer;
 }
 .contact-list li a:hover::before {
   transform: translateY(-50%) scaleY(1);
 }
 .contact-list li a:visited {
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
 }
 .hamburger-button {
   display: none;
@@ -345,7 +459,7 @@ a:visited {
   max-width: 100%;
   width: 100%;
   overflow-y: auto;
-  background-color: rgb(27, 27, 27);
+  background-color: var(--bg-page);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -362,7 +476,7 @@ a:visited {
   position: relative;
 }
 .hello a{
-  color: rgb(233, 233, 233)
+  color: var(--text-primary)
 }
 .profile-pic-container {
   width: 50%; 
@@ -533,15 +647,15 @@ a:visited {
 @keyframes jumpAndColor {
   0%, 100% {
     transform: translateY(0);
-    color: rgb(233, 233, 233);
+    color: var(--text-primary);
   }
   50% {
     transform: translateY(-20px);
-    color: #902bf5;
+    color: var(--accent);
   }
 }
 .scroll-line-1 {
-  border-left: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid var(--line);
   height: 0rem;
   bottom: 0;
   margin-top: 0rem;
@@ -582,7 +696,7 @@ a:visited {
   min-height: 600px;
   width: 100%;
   max-width: 100%;
-  background-color: rgb(27, 27, 27);
+  background-color: var(--bg-page);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -626,11 +740,11 @@ a:visited {
 .aboutme-description a{
   font-style: italic;
   font-weight: bold;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
   transition: color 0.2s ease;
 }
 .aboutme-description a:hover {
-  color: #902bf5;
+  color: var(--accent);
 }
 .profile-pic-about {
   width: 25%;
@@ -641,7 +755,7 @@ a:visited {
   margin-bottom: 0%;
   position: relative;
   border-radius: 0.5rem;
-  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 10px 25px var(--shadow-soft);
   z-index: 1;
 }
 /*Projects --------------------------*/
@@ -673,27 +787,27 @@ a:visited {
   height: auto;
   width: 50%;
   display: flex;
-  border: 1px solid black;
+  border: 1px solid var(--card-border);
   margin-bottom: 60px;
-  box-shadow: 15px 15px 30px rgb(0, 0, 0);
+  box-shadow: 15px 15px 30px var(--shadow-strong);
   border-radius: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-container-1:hover, .project-container-2:hover, .project-container-3:hover {
   transform: translateY(-4px);
-  box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 15px 20px 40px var(--shadow-hover);
 }
 .project-1, .project-2, .project-3 {
   display: flex;
   flex-direction: column;
-  color: black;
+  color: var(--text-card);
   width: 50%;
   align-items: center;
-  background-color: whitesmoke;
+  background-color: var(--bg-card);
   border-radius: 1rem 0rem 0rem 1rem ;
 }
 .project-1 a, .project-2 a, .project-3 a {
-  color: black;
+  color: var(--text-card);
   font-size: 2vw;
   font-weight: bold;
   text-decoration: none;
@@ -701,7 +815,7 @@ a:visited {
   transition: color 0.2s ease;
 }
 .project-1 a:hover, .project-2 a:hover, .project-3 a:hover {
-  color: #902bf5;
+  color: var(--accent);
 }
 .project-1-side-image, .project-2-side-image, .project-3-side-image {
   display: flex;
@@ -734,7 +848,7 @@ a:visited {
   box-sizing: content-box; /* height is the visible face, borders sit outside it */
   height: var(--face-height);
   display: inline-block;
-  border: 3px solid #902bf5;
+  border: 3px solid var(--accent);
   font-family: "Roboto", sans-serif;
   overflow: hidden;
   margin-top: 10%;
@@ -760,12 +874,12 @@ a:visited {
 }
 
 .face-primary-try-it-out {
-  background-color: #902bf5;
-  color: #fff;
+  background-color: var(--accent);
+  color: #fff; /* literal: always sits on the purple fill */
 }
 .face-secondary-try-it-out {
-  background-color: rgb(241, 241, 241);
-  color: #030303;
+  background-color: var(--face2-bg);
+  color: var(--face2-text);
 }
 
 .try-it-out-button:hover .face-primary-try-it-out,
@@ -797,7 +911,7 @@ a:visited {
   min-width: 300px;
   max-width: 500px;
   display: inline-block;
-  border: 3px solid rgb(17, 195, 219);
+  border: 3px solid var(--accent-2);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: 500;
@@ -816,12 +930,12 @@ a:visited {
 }
 
 .face-primary {
-  background-color: rgb(17, 195, 219);
+  background-color: var(--accent-2);
   color: #dadada;
 }
 .face-secondary {
-  background-color: rgb(241, 241, 241);
-  color: #030303;
+  background-color: var(--face2-bg);
+  color: var(--face2-text);
 }
 
 #resume-button:hover .face-primary,
@@ -849,7 +963,7 @@ a:visited {
   align-items: center;
   padding: 4rem 2rem 3rem;
   margin-top: 12rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
 }
 .footer-links {
   display: flex;
@@ -857,7 +971,7 @@ a:visited {
   margin-bottom: 2rem;
 }
 .footer-links a {
-  color: rgba(235, 235, 235, 0.6);
+  color: var(--text-muted);
   text-decoration: none;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
@@ -865,11 +979,11 @@ a:visited {
   transition: color 0.2s ease;
 }
 .footer-links a:hover {
-  color: #fff;
+  color: var(--text-hover);
 }
 .footer-copy {
   font-size: 1.2rem;
-  color: rgba(235, 235, 235, 0.4);
+  color: var(--text-faint);
 }
 
 /* Smaller screens (Mobile devices) */
@@ -946,13 +1060,13 @@ a:visited {
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      background-color: rgb(27, 27, 27);
+      background-color: var(--bg-page);
   }
 
   .contact-button {
     display:none;
     border: 0px;
-    color: rgba(235, 235, 235, 0.8);
+    color: var(--text-nav);
     height: 0rem;
     width: 0rem;
     font-size: 0rem;
@@ -962,7 +1076,7 @@ a:visited {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    color: rgb(235, 235, 235);
+    color: var(--text-primary);
     font-size: 3.2rem;
     line-height: 1;
     background: none;
@@ -984,7 +1098,7 @@ a:visited {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: rgba(235, 235, 235, 0.85);
+    color: var(--text-strong);
     z-index: 30;
 }
 
@@ -1003,11 +1117,11 @@ a:visited {
     right: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgba(30, 30, 30, 0.95);
+    background-color: var(--bg-panel-solid);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid var(--border-subtle);
+    box-shadow: -4px 0 8px var(--shadow-panel);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out, visibility 0.3s;
     padding: 20px;
@@ -1022,7 +1136,7 @@ a:visited {
 }
 
   .hamburger-list li a{
-    color: rgba(235, 235, 235, 0.85);
+    color: var(--text-strong);
     font-size: 1.5rem;
     text-decoration: none;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -1033,11 +1147,11 @@ a:visited {
     padding: 20px;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-weight: bold;
-    color: rgba(235, 235, 235, 0.85);
+    color: var(--text-strong);
   }
 
   .hamburger-list li a:hover {
-    color: #fff;
+    color: var(--text-hover);
     cursor: pointer;
   }
 
@@ -1141,7 +1255,7 @@ a:visited {
   }
 
   .vertical-line {
-    border-left: 0px solid rgb(255, 255, 255);
+    border-left: 0px solid var(--line);
     height: 4rem;
     margin-top: 0rem;
   }
@@ -1150,7 +1264,7 @@ a:visited {
     background:none;
     border: 0px;
     background-size: 0%;
-    color: rgba(235, 235, 235, 0.8);
+    color: var(--text-nav);
     height: 0rem;
     width: 0rem;
     margin-top: 0rem;
@@ -1190,7 +1304,7 @@ a:visited {
 }
 
   .scroll-line-1 {
-    border-left: 1px solid rgb(255, 255, 255);
+    border-left: 1px solid var(--line);
     height: 50rem;
     margin-top: 0rem;
     margin-left: 0rem;
@@ -1253,7 +1367,7 @@ a:visited {
   .aboutme-description a{
   font-style: italic;
   font-weight: bold;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
   }
   
   .profile-pic-about {
@@ -1300,20 +1414,20 @@ a:visited {
     width: min(400px, calc(100vw - 3rem)); /* fixed 400px overflowed narrow phones */
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid var(--card-border);
     margin-top: 10rem;
-    box-shadow: 15px 15px 30px rgb(0, 0, 0);
+    box-shadow: 15px 15px 30px var(--shadow-strong);
     border-radius: 1rem;
   }
 
   .project-1, .project-2, .project-3, .project-4 {
     display: flex;
     flex-direction: column;
-    color: black;
+    color: var(--text-card);
     height: auto; /* 50% of a fixed height clipped the longer descriptions */
     width: 100%;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: var(--bg-card);
     border-radius: 1rem 1rem 0rem 0rem ;
   }
   .project-1 a, .project-2 a, .project-3 a {
@@ -1391,23 +1505,23 @@ font-size: 3rem;
 h1 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 h2 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 h3 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 
 h5 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin-bottom: 2rem;
-  color: rgb(233, 233, 233);
+  color: var(--text-primary);
 }
 
 .hello {
@@ -1473,13 +1587,13 @@ h5 {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: rgb(27, 27, 27);
+    background-color: var(--bg-page);
 }
 
 .contact-button {
   display:none;
   border: 0px;
-  color: rgba(235, 235, 235, 0.8);
+  color: var(--text-nav);
   height: 0rem;
   width: 0rem;
   font-size: 0rem;
@@ -1489,7 +1603,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: rgb(235, 235, 235);
+  color: var(--text-primary);
   font-size: 3.2rem;
   line-height: 1;
   background: none;
@@ -1511,7 +1625,7 @@ h5 {
   position: absolute;
   top: 10px;
   right: 10px;
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
   z-index: 30;
 }
 
@@ -1530,11 +1644,11 @@ h5 {
   right: 0;
   width: 250px;
   height: 100vh;
-  background-color: rgba(30, 30, 30, 0.95);
+  background-color: var(--bg-panel-solid);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  border-left: 1px solid var(--border-subtle);
+  box-shadow: -4px 0 8px var(--shadow-panel);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out, visibility 0.3s;
   padding: 20px;
@@ -1549,7 +1663,7 @@ h5 {
 }
 
 .hamburger-list li a{
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
   font-size: 1.5rem;
   text-decoration: none;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -1560,11 +1674,11 @@ h5 {
   padding: 20px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color: rgba(235, 235, 235, 0.85);
+  color: var(--text-strong);
 }
 
 .hamburger-list li a:hover {
-  color: #fff;
+  color: var(--text-hover);
   cursor: pointer;
 }
 
@@ -1659,14 +1773,14 @@ h5 {
 }
 
 .vertical-line {
-  border-left: 0px solid rgb(255, 255, 255);
+  border-left: 0px solid var(--line);
 }
 
 .menu-toggle-button {
   background:none;
   border: 0px;
   background-size: 0%;
-  color: rgba(235, 235, 235, 0.8);
+  color: var(--text-nav);
   height: 0rem;
   width: 0rem;
   margin-top: 0rem;
@@ -1706,7 +1820,7 @@ h5 {
 }
 
 .scroll-line-1 {
-  border-left: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid var(--line);
   height: 50rem;
   margin-top: 0rem;
   margin-left: 0rem;
@@ -1769,7 +1883,7 @@ margin-bottom: 4rem;
 .aboutme-description a{
 font-style: italic;
 font-weight: bold;
-color: rgb(233, 233, 233);
+color: var(--text-primary);
 }
 
 .profile-pic-about {
@@ -1852,7 +1966,7 @@ position: relative;
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #902bf5;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
