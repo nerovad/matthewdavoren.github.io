@@ -65,7 +65,15 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  position: fixed;
+  /* The page scrolls inside .container-home, so that div owns the scrollbar and
+     a fixed header -- sized to the whole viewport -- paints straight over it.
+     Sticky measures against the container's content box instead, stopping at
+     the scrollbar. The negative margin keeps it out of the flow, so the content
+     below still starts at the top of the container exactly as it did when this
+     was position: fixed. */
+  position: sticky;
+  top: 0;
+  margin-bottom: -7rem;
   width: 100%;
   background-color: rgb(27, 27, 27);
 }
