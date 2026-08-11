@@ -324,7 +324,10 @@ a:visited {
   padding: 0;
   margin-top: 0;
   margin-left: auto;
-  margin-right: 1.6rem;
+  /* 1.65rem of visible gap. letter-spacing puts a trailing 0.1em after the
+     final T that belongs to the box but reads as empty space, so subtract it
+     and the gap measures from the glyph. Pairs with .contact-divider below. */
+  margin-right: calc(1.65rem - 0.1em);
   margin-bottom: 0;
   font-size: 2rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -339,9 +342,14 @@ a:visited {
    the rule itself and its grow/fade animation; only the spacing differs. The
    two gaps sum to 2.3rem either way, so trading margin between here and
    .contact-button slides the line without moving the toggle. */
+/* Centred on what the eye sees, not on the boxes. The toggle is a 3.6rem
+   button around a 2.1rem icon, so 0.75rem of it is invisible padding: 0.9rem
+   of margin here plus that padding is the same 1.65rem of blank space the
+   label gets on the other side. Both sides are rem, so the line stays centred
+   at every width the divider is shown. */
 .contact-divider {
   margin-left: 0;
-  margin-right: 0.7rem;
+  margin-right: 0.9rem;
 }
 /* Theme toggle ------------------------------------------------------------
    Sits to the right of CONTACT, past the divider, its 3rem outer margin
