@@ -4,6 +4,31 @@
   --color-secondary: rgb(233, 180, 182);
   --color-accent: rgb(234, 166, 18);
   --color-bg: rgb(0, 0, 0);
+
+  /* The page is dark, so ask the browser for its dark UI rendering -- without
+     this it paints a light scrollbar against the dark background. */
+  color-scheme: dark;
+  /* scrollbar-color is inherited, so this reaches every scroll container on
+     the page, not just the one that owns the main scrollbar. */
+  scrollbar-color: rgb(78, 78, 78) rgb(18, 18, 18);
+}
+
+/* Fallback for browsers without scrollbar-color (Safari < 18, Chromium < 121).
+   Where scrollbar-color is supported it takes precedence and these are ignored,
+   so the two paths are kept to the same colours. */
+.container-home::-webkit-scrollbar {
+  width: 14px;
+}
+.container-home::-webkit-scrollbar-track {
+  background: rgb(18, 18, 18);
+}
+.container-home::-webkit-scrollbar-thumb {
+  background: rgb(78, 78, 78);
+  border: 3px solid rgb(18, 18, 18);
+  border-radius: 8px;
+}
+.container-home::-webkit-scrollbar-thumb:hover {
+  background: rgb(105, 105, 105);
 }
 *,
 *::before,
