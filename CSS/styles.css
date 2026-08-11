@@ -135,16 +135,8 @@ h5 {
   color: var(--text-primary);
 }
 p {
-<<<<<<< HEAD
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  color: rgb(233, 233, 233);
-||||||| 59115e5
-  font: "roboto", Arial, helvetica, sans-serif;
-  color: rgb(233, 233, 233);
-=======
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: var(--text-primary);
->>>>>>> fix/site-bugs-and-accessibility
 }
 html,
 body {
@@ -618,10 +610,7 @@ a:visited {
 
   animation: fade-in-scroll-1 6s
 }
-/* Only the per-letter spans animate — matching the wrapper too made the whole
-   word jump in unison and cancelled out the staggered wave. */
-.scroll-word-1 span span {
-  display: inline-block; /* transform has no effect on a purely inline box */
+.scroll-word-1 span {
   opacity: 1;
   animation: jumpAndColor 5s ease-in-out infinite;
 }
@@ -892,10 +881,6 @@ a:visited {
   background-color: var(--face2-bg);
   color: var(--face2-text);
 }
-.face-secondary-try-it-out {
-  background-color: rgb(241, 241, 241);
-  color: #030303;
-}
 
 .try-it-out-button:hover .face-primary-try-it-out,
 .try-it-out-button:focus-visible .face-primary-try-it-out {
@@ -926,16 +911,8 @@ a:visited {
   min-width: 300px;
   max-width: 500px;
   display: inline-block;
-<<<<<<< HEAD
-  border: 3px solid rgb(17, 195, 219);
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-||||||| 59115e5
-  border: 3px solid rgb(17, 195, 219);
-  font-family: "Roboto", sans-serif;
-=======
   border: 3px solid var(--accent-2);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
->>>>>>> fix/site-bugs-and-accessibility
   font-size: 40px;
   font-weight: 500;
   text-align: center;
@@ -1099,18 +1076,9 @@ a:visited {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-<<<<<<< HEAD
-    color: rgb(235, 235, 235);
-    font-size: 3.2rem;
-    line-height: 1;
-||||||| 59115e5
-    color: rgb(235, 235, 235);
-    font-size: 6rem;
-=======
     color: var(--text-primary);
     font-size: 3.2rem;
     line-height: 1;
->>>>>>> fix/site-bugs-and-accessibility
     background: none;
     cursor: pointer;
     border: none;
@@ -1455,16 +1423,8 @@ a:visited {
   .project-1, .project-2, .project-3, .project-4 {
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-    color: black;
-    height: auto; /* 50% of a fixed height clipped the longer descriptions */
-||||||| 59115e5
-    color: black;
-    height: 50%;
-=======
     color: var(--text-card);
     height: auto; /* 50% of a fixed height clipped the longer descriptions */
->>>>>>> fix/site-bugs-and-accessibility
     width: 100%;
     align-items: center;
     background-color: var(--bg-card);
@@ -1643,18 +1603,9 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-<<<<<<< HEAD
-  color: rgb(235, 235, 235);
-  font-size: 3.2rem;
-  line-height: 1;
-||||||| 59115e5
-  color: rgb(235, 235, 235);
-  font-size: 6rem;
-=======
   color: var(--text-primary);
   font-size: 3.2rem;
   line-height: 1;
->>>>>>> fix/site-bugs-and-accessibility
   background: none;
   cursor: pointer;
   border: none;
@@ -1999,57 +1950,6 @@ position: relative;
 
 }
 
-<<<<<<< HEAD
-/* ---------------------------------------------------------------------------
-   Keyboard focus
-   Buttons and links had no visible focus state at all, so tabbing through the
-   nav gave no indication of where you were.
-   --------------------------------------------------------------------------- */
-/* The header is fixed, so in-page scroll targets need to stop clear of it
-   instead of landing underneath. The extra room absorbs the 24px the
-   reveal animation lifts these sections by once they come into view. */
-#about-me-title,
-#projects-title,
-#resume-button {
-  scroll-margin-top: 11rem;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #902bf5;
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* ---------------------------------------------------------------------------
-   Reduced motion
-   The page opens with several entrance animations and keeps a looping one
-   running forever. Honour the OS-level "reduce motion" setting.
-   Several elements are only made visible *by* their animation (the profile pic
-   fades in from opacity 0, the scroll line grows from height 0), so those need
-   their finished state restored explicitly rather than just having motion cut.
-   --------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .profile-pic {
-    opacity: 1;
-  }
-  .scroll-line-1 {
-    height: 50rem;
-  }
-  .animate-on-scroll {
-    opacity: 1;
-    transform: none;
-  }
-||||||| 59115e5
-=======
 /* ---------------------------------------------------------------------------
    Keyboard focus
    Buttons and links had no visible focus state at all, so tabbing through the
@@ -2098,5 +1998,4 @@ button:focus-visible {
     opacity: 1;
     transform: none;
   }
->>>>>>> fix/site-bugs-and-accessibility
 }

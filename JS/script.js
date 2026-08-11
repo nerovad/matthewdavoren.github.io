@@ -1,51 +1,3 @@
-<<<<<<< HEAD
-var menu = document.querySelector('.menu-items');
-var menuButton = document.querySelector('.menu-toggle-button');
-var contact = document.querySelector('.contact-list');
-var contactButton = document.querySelector('.contact-button');
-var hamburgerList = document.querySelector('.hamburger-list');
-var hamburgerButton = document.querySelector('.hamburger-button');
-var closeButton = document.querySelector('.close-button');
-
-function closeMenu() {
-  menu.classList.remove('dropdown-open');
-  menuButton.textContent = 'NAVIGATION';
-  menuButton.setAttribute('aria-expanded', 'false');
-}
-
-function closeContact() {
-  contact.classList.remove('dropdown-open');
-  contactButton.textContent = 'CONTACT';
-  contactButton.setAttribute('aria-expanded', 'false');
-}
-
-function closeHamburger() {
-  hamburgerList.classList.remove('show');
-  hamburgerButton.setAttribute('aria-expanded', 'false');
-  hamburgerButton.setAttribute('aria-label', 'Open menu');
-}
-
-function toggleMenu() {
-  closeContact();
-  var open = menu.classList.toggle('dropdown-open');
-  menuButton.textContent = open ? 'CLOSE' : 'NAVIGATION';
-  menuButton.setAttribute('aria-expanded', String(open));
-||||||| 59115e5
-function toggleMenu() {
-  var menu = document.querySelector('.menu-items');
-  var button = document.querySelector('.menu-toggle-button');
-  var contact = document.querySelector('.contact-list');
-  var contactButton = document.querySelector('.contact-button');
-
-  // Close contact if open
-  if (contact.classList.contains('dropdown-open')) {
-    contact.classList.remove('dropdown-open');
-    contactButton.textContent = 'CONTACT';
-  }
-
-  menu.classList.toggle('dropdown-open');
-  button.textContent = menu.classList.contains('dropdown-open') ? 'CLOSE' : 'NAVIGATION';
-=======
 var menu = document.querySelector('.menu-items');
 var menuButton = document.querySelector('.menu-toggle-button');
 var contact = document.querySelector('.contact-list');
@@ -113,7 +65,6 @@ function toggleMenu() {
   var open = menu.classList.toggle('dropdown-open');
   menuButton.textContent = open ? 'CLOSE' : 'NAVIGATION';
   menuButton.setAttribute('aria-expanded', String(open));
->>>>>>> fix/site-bugs-and-accessibility
 }
 
 function toggleContact() {
