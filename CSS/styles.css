@@ -658,9 +658,9 @@ a:visited {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 25%;
+  margin-top: 12%;
   margin-left: 0%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   align-items: center;
   justify-content: center;
   font-size: 20px;
@@ -780,13 +780,13 @@ a:visited {
   align-items: center;
   position: relative;
   margin-left: 0%;
-  height: 50%;
-  min-height: 10%;
-  max-height: 50%;
+  /* Was height: 50% -- half the 100vh scroll container -- which centred the
+     button in a ~450px box and padded it with dead space above and below. */
+  height: auto;
   width: 100%;
   min-width: 100px;
   max-width: 100%;
-  margin-top: 14%;
+  margin-top: 10%;
 }
 
 #resume-button {
@@ -848,7 +848,7 @@ a:visited {
   flex-direction: column;
   align-items: center;
   padding: 4rem 2rem 3rem;
-  margin-top: 8rem;
+  margin-top: 12rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .footer-links {
@@ -1226,7 +1226,7 @@ a:visited {
   justify-content: center;
   align-items: center;
   margin-top: 0rem;
-  min-height: 1400px;
+  min-height: 1280px;
   padding: 5%;
   
   }
@@ -1357,7 +1357,7 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 6rem;
   margin-bottom: 6rem;
   width: 100%;
   min-width: 100%;
@@ -1368,7 +1368,7 @@ font-size: 3rem;
 }
 
 .site-footer {
-  margin-top: 4rem;
+  margin-top: 10rem;
   padding: 3rem 1.5rem 2rem;
 }
 .footer-links {
@@ -1742,7 +1742,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 margin-top: 0rem;
-min-height: 1100px;
+min-height: 900px;
 padding: 5%;
 
 }
@@ -1830,7 +1830,7 @@ position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1%;
+  margin-top: 16rem;
   margin-bottom: 4rem;
 }
 
